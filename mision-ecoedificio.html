@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Misión EcoEdificio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e9f9e9;
+      padding: 20px;
+    }
+    h1 {
+      color: #2e7d32;
+      text-align: center;
+    }
+    .panel {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #388e3c;
+    }
+    .indicadores {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f8e9;
+      border-radius: 10px;
+    }
+    .indicadores p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="panel">
+    <h1>🌱 Misión EcoEdificio</h1>
+    <p>Eres el planificador urbano de Bogotá. Elige bien tus intervenciones para mejorar el bienestar de la comunidad escolar o hospitalaria.</p>
+
+    <button onclick="aplicarIntervencion('aire')">💨 Instalar ventilación eficiente</button>
+    <button onclick="aplicarIntervencion('verde')">🌿 Crear jardín terapéutico</button>
+    <button onclick="aplicarIntervencion('energia')">🔋 Mejorar eficiencia energética</button>
+    <button onclick="aplicarIntervencion('movilidad')">🚶 Fomentar rutas seguras</button>
+
+    <div class="indicadores">
+      <h3>Indicadores de Bienestar</h3>
+      <p>🫁 Salud respiratoria: <span id="salud">50</span>/100</p>
+      <p>🌿 Bienestar psicosocial: <span id="bienestar">50</span>/100</p>
+      <p>🌎 Emisiones de CO₂: <span id="emisiones">50</span>/100</p>
+      <p>👣 Movilidad activa: <span id="movilidad">50</span>/100</p>
+    </div>
+  </div>
+
+  <script>
+    let salud = 50;
+    let bienestar = 50;
+    let emisiones = 50;
+    let movilidad = 50;
+
+    function aplicarIntervencion(tipo) {
+      switch (tipo) {
+        case 'aire':
+          salud += 15;
+          emisiones -= 10;
+          break;
+        case 'verde':
+          bienestar += 20;
+          salud += 5;
+          break;
+        case 'energia':
+          emisiones -= 20;
+          break;
+        case 'movilidad':
+          movilidad += 15;
+          emisiones -= 5;
+          break;
+      }
+      actualizarIndicadores();
+    }
+
+    function actualizarIndicadores() {
+      document.getElementById("salud").innerText = Math.min(salud, 100);
+      document.getElementById("bienestar").innerText = Math.min(bienestar, 100);
+      document.getElementById("emisiones").innerText = Math.max(emisiones, 0);
+      document.getElementById("movilidad").innerText = Math.min(movilidad, 100);
+    }
+  </script>
+
+</body>
+</html>
